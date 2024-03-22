@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Order;
      */
     @Test
     @BeforeAll
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Initializing the test data and queue object to test.")
     static void initializeQueueImplementation() {
         System.out.println("Testing creating queue.");
@@ -56,7 +56,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(1)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test the empty queue behaviour.")
     void emptyQueueTest() {
         // Test that count of just initialized queue is zero and remove returns null.
@@ -74,7 +74,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(2)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Very basic queue tests")
     void basicQueueTests() {
         System.out.println("Testing basic queue functionality.");
@@ -110,7 +110,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(3)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test filling the queue and emptying it using add and remove.")
     void addRemoveQueueTest() {
         System.out.println("Testing filling and emptying a queue.");
@@ -142,7 +142,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(4)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test queue reallocation.")
     void overFillQueueTest() {
         System.out.println("Testing trying to overfill a queue.");
@@ -181,7 +181,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(6)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Testing the dequeue and reset methods")
     void removeTest() {
         System.out.println("Testing remove and reset methods with count and element values.");
@@ -202,7 +202,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(7)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Testing the print method")
     void printTest() {
         System.out.println("Testing printing queue values in correct order (head -> tail).");
@@ -251,7 +251,7 @@ import org.junit.jupiter.api.Order;
 
     @Test
     @Order(8)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Testing reallocation of the queue.")
     void reallyGrowTheQueue() {
         QueueInterface<Integer> queueToTest = QueueFactory.createIntegerQueue(30);

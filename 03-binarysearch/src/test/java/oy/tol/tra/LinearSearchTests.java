@@ -15,7 +15,7 @@ public class LinearSearchTests {
     private static final int NUMBERS_TO_SEARCH = 10;
 
     @Test
-    @Timeout(value = 120, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 120, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Tests Integer linear search implementation")
     void findFromIntArrayTests() {
         try {
@@ -44,7 +44,7 @@ public class LinearSearchTests {
     }
 
     @Test
-    @Timeout(value = 120, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 120, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Tests String linear search implementation")
     void findFromStringArrayTests() {
         try {

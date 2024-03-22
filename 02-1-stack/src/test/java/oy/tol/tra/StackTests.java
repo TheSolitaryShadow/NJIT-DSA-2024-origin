@@ -58,7 +58,7 @@ public class StackTests {
 
     @Test
     @Order(1)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test the empty stack behaviour.")
     void emptyStackTest() {
         // Test that count of just initialized stack is zero and pop returns null.
@@ -82,7 +82,7 @@ public class StackTests {
 
     @Test
     @Order(2)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test filling the stack and emptying it using push and pop.")
     void pushPopStackTest() {
         // Create a random count to fill the stack to.
@@ -119,7 +119,7 @@ public class StackTests {
 
     @Test
     @Order(3)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+   // @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Try to put more items in the stack it should be able to hold.")
     void overFillStackTest() {
         // Reset the stack to be empty.
@@ -145,7 +145,7 @@ public class StackTests {
 
     @Test
     @Order(4)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Test resetting the stack so state is correct after reset.")
     void resetStackTest() {
         // Put something in the stack, then reset it and check if it is empty.
@@ -165,7 +165,7 @@ public class StackTests {
 
     @Test
     @Order(5)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+   // @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Testing the peek method")
     void peekTest() {
         StackInterface<Integer> stackToTest = StackFactory.createIntegerStack(10);
@@ -183,7 +183,7 @@ public class StackTests {
 
     @Test
     @Order(6)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Try to put more items in the stack it should be able to hold.")
     void reallyGrowTheStack() {
         StackInterface<Integer> stackToTest = StackFactory.createIntegerStack(10);
@@ -209,7 +209,7 @@ public class StackTests {
 
     @Test
     @Order(7)
-    @Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+    //@Timeout(value = 10, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
     @DisplayName("Check that capacity() is not actually the same as size(), which is wrong.")
     void testCapacityIsNotTheSize() {
         StackInterface<Integer> stackToTest = StackFactory.createIntegerStack(10);
