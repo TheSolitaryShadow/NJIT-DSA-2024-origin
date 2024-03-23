@@ -22,7 +22,7 @@ public class KeyValueHashTable<K extends Comparable<K>, V> implements Dictionary
 
     @Override
     public Type getType() {
-        return Type.NONE;
+        return Type.HASHTABLE;
     }
 
     @SuppressWarnings("unchecked")
@@ -41,8 +41,7 @@ public class KeyValueHashTable<K extends Comparable<K>, V> implements Dictionary
 
     @Override
     public int size() {
-        // TODO: Implement this.
-        return 0;
+        return count;
     }
 
     /**
@@ -70,12 +69,32 @@ public class KeyValueHashTable<K extends Comparable<K>, V> implements Dictionary
 
     @Override
     public boolean add(K key, V value) throws IllegalArgumentException, OutOfMemoryError {
-        // TODO: Implement this.
-        // Remeber to check for null values.
+        if (null == key || null == value) {
+            throw new IllegalArgumentException("Keys or values cannot be null");
+        }
 
         // Checks if the LOAD_FACTOR has been exceeded --> if so, reallocates to a bigger hashtable.
         if (((double)count * (1.0 + LOAD_FACTOR)) >= values.length) {
             reallocate((int)((double)(values.length) * (1.0 / LOAD_FACTOR)));
+        }
+        int hashcode=key.hashCode();
+        int index=hashcode%values.length;
+        if(index<0){
+            index+=values.length;
+        }
+        for(int i=0;i<values.length;i++){
+            if(values[(index+i)%values.length]==null){
+                values[(index+i)%values.length]=new Pair<>(key, value);
+                count++;
+                if(i!=0){
+                    collisionCount++;
+                }
+                return true;
+            }
+            else if(values[(index+i)%values.length].getKey().equals(key)){
+                values[(index+i)%values.length]=new Pair<>(key, value);
+                return true;
+            }
         }
         // Remember to get the hash key from the Person,
         // hash table computes the index for the Person (based on the hash value),
@@ -88,10 +107,25 @@ public class KeyValueHashTable<K extends Comparable<K>, V> implements Dictionary
 
     @Override
     public V find(K key) throws IllegalArgumentException {
+        if (null == key) {
+            throw new IllegalArgumentException("Keys or values cannot be null");
+        }
+        int hashcode=key.hashCode();
+        int index=hashcode%values.length;
+        if(index<0){
+            index+=values.length;
+        }
+        for(int i=0;i<values.length;i++){
+            if(values[(index+i)%values.length]==null){
+                return null;
+            }
+            else if(values[(index+i)%values.length].getKey().equals(key)){
+                return values[(index+i)%values.length].getValue();
+            }
+        }
         // Remember to check for null.
 
         // Must use same method for computing index as add method
-        
         return null;
     }
 
@@ -134,5 +168,7 @@ public class KeyValueHashTable<K extends Comparable<K>, V> implements Dictionary
 			      reallocate(newCapacity);
 		    } 
     }
+
+    
  
 }

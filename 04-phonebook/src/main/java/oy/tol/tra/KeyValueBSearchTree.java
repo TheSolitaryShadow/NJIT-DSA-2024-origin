@@ -5,19 +5,18 @@ public class KeyValueBSearchTree<K extends Comparable<K>, V> implements Dictiona
     // This is the BST implementation, KeyValueHashTable has the hash table
     // implementation
 
-    private TreeNode<K, V> root;
+    private TreeNode<K, V> root=null;
     private int count = 0;
     private int maxTreeDepth = 0;
 
     @Override
     public Type getType() {
-        return Type.NONE;
+        return Type.BST;
     }
 
     @Override
     public int size() {
-        // TODO: Implement this
-        return 0;
+        return count;
     }
 
     /**
@@ -48,21 +47,40 @@ public class KeyValueBSearchTree<K extends Comparable<K>, V> implements Dictiona
 
     @Override
     public boolean add(K key, V value) throws IllegalArgumentException, OutOfMemoryError {
-        // TODO: Implement this
-        // Remember null check.
-        // If root is null, should go there.
+        if (null == key || null == value) {
+            throw new IllegalArgumentException("Keys or values cannot be null");
+        }
+        else{
+            if (root == null) {
+                root=new TreeNode<K, V>(key,value);
+                count=1;
+                return true;
+            }
+            else{
+                int hash = key.hashCode();
+                int added=root.insert(key, value, hash);
+                count=count+added;
+                return true;
+            }
+        }
         
-            // update the root node. But it may have children
-            // so do not just replace it with this new node but set
-            // the keys and values for the already existing root.
-            
-        return false;
     }
 
     @Override
     public V find(K key) throws IllegalArgumentException {
-        // TODO: Implement this. //Think about this
-        return (null);
+        if (null == key) {
+            throw new NullPointerException("Keys or values cannot be null");
+        }
+        else{
+            if (root == null) {
+                throw new NullPointerException("root is null");
+            }
+            else{
+                int hash = key.hashCode();
+                V finded=root.find(key, hash);
+                return finded;
+            }
+        }
     }
 
     @Override
