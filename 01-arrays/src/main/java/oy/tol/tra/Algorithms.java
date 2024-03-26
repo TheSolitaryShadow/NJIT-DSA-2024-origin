@@ -18,22 +18,13 @@ public class Algorithms {
    /**
     * The method to reverse the internal Java int array.
     */
-   public static void reverse(Integer [] algo) {
+   
+
+   public static <T> void reverse(T [] algo) {
 
       int i = 0;
       while (i < algo.length/2) {
-         Integer temp = algo[i];
-         algo[i] = algo[algo.length-i-1];
-         algo[algo.length-i-1] = temp;
-         i++;
-     }
-   }
-
-   public static void reverse(String [] algo) {
-
-      int i = 0;
-      while (i < algo.length/2) {
-         String temp = algo[i];
+         T temp = algo[i];
          algo[i] = algo[algo.length-i-1];
          algo[algo.length-i-1] = temp;
          i++;
@@ -44,39 +35,21 @@ public class Algorithms {
    /**
     * Sorts the array to ascending order.
     */
-   public static void sort(Integer [] algo) {
-      
-      if (algo == null || algo.length <= 1) {
-          return;
-      }
-
-      for (int i = 1; i < algo.length; i++) {
-          int tmp = algo[i];
-          int j = i - 1;
-          while (j >= 0 && algo[j] > tmp) {
-              algo[j + 1] = algo[j];
-              j--;
-          }
-          algo[j + 1] = tmp;
-      }
-   }
-
-   public static void sort(String [] algo) {
-      
-      if (algo == null || algo.length <= 1) {
-          return;
-      }
-
-      for (int i = 1; i < algo.length; i++) {
-          String tmp = algo[i];
-          int j = i - 1;
-          while (j >= 0 && algo[j].compareTo(tmp)>0) {
-              algo[j + 1] = algo[j];
-              j--;
-          }
-          algo[j + 1] = tmp;
-      }
-   }
+    public static <T extends Comparable<T>> void sort(T [] algo){
+        if (algo == null || algo.length <= 1) {
+           return;
+       }
+  
+       for (int i = 1; i < algo.length; i++) {
+           T tmp = algo[i];
+           int j = i - 1;
+           while (j >= 0 && algo[j].compareTo(tmp)>0) {
+               algo[j + 1] = algo[j];
+               j--;
+           }
+           algo[j + 1] = tmp;
+       }
+     }
 
 
 }
