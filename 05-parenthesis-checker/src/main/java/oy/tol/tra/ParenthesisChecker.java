@@ -48,18 +48,31 @@ public class ParenthesisChecker {
     * @throws StackAllocationException If the stack cannot be allocated or reallocated if necessary.
     */
     public static int checkParentheses(StackInterface<Character> stack, String fromString) throws ParenthesesException {
-      // TODO:
-      // for each character in the input string
-      //   if character is an opening parenthesis -- one of "([{"
-      //      push it into the stack (check for failure and throw an exception if so)
-      //   else if character is a closing parenthesis -- one of ")]}"
-      //      pop the latest opening parenthesis from the stack
-      //      if the popped item is null
-      //         throw an exception, there are too many closing parentheses 
-      //      check the popped opening parenthesis against the closing parenthesis read from the string
-      //      if they do not match -- opening was { but closing was ], for example.
-      //         throw an exception, wrong kind of parenthesis were in the text (e.g. "asfa ( asdf } sadf")
-      // if the stack is not empty after all the characters have been handled
-      //   throw an exception since the string has more opening than closing parentheses.
+      int count=0;
+      for(int i=0;i<fromString.length();i++){
+         Character part=fromString.charAt(i);
+         if(part=='('||part=='['||part=='{'){
+            stack.push(part);
+            count++;
+         }
+         else if(part==')'||part==']'||part=='}'){
+            if (stack.size()<=0) {
+               throw new ParenthesesException(fromString, i);
+            }
+            Character close=stack.pop();
+            if(part.compareTo(close)==1||part.compareTo(close)==2){
+               count++;
+            }
+            else{
+               throw new ParenthesesException(fromString, i);
+            }
+         }
+         
+      }
+      if (stack.size()==0) {
+         return count;
+      }
+      throw new ParenthesesException(fromString, stack.capacity());
+
    }
 }
