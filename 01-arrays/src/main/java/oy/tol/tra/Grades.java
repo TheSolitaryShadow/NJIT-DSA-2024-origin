@@ -19,30 +19,20 @@ public class Grades {
       }
    }
 
-   /**
-    * The method to reverse the internal Java int array.
-    */
+  //change
    public void reverse() {
-      
       Algorithms.reverse(grades);
    }
 
 
-   /**
-    * Sorts the array to ascending order.
-    */
-
-
+  
+   //change
    public void sort() {
-      
       Algorithms.sort(grades);
    }
 
    
-   /**
-    * Returns the plain Java int [] array for investigation.
-    * @return The int array.
-    */
+ 
    public Integer [] getArray() {
       return grades;
    }

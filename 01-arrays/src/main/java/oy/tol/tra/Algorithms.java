@@ -15,10 +15,7 @@ public class Algorithms {
    
    
 
-   /**
-    * The method to reverse the internal Java int array.
-    */
-   
+   //change
 
    public static <T> void reverse(T [] algo) {
 
@@ -31,10 +28,7 @@ public class Algorithms {
      }
    }
 
-
-   /**
-    * Sorts the array to ascending order.
-    */
+   //change
     public static <T extends Comparable<T>> void sort(T [] algo){
         if (algo == null || algo.length <= 1) {
            return;
