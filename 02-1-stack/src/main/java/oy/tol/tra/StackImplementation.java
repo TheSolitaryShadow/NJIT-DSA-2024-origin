@@ -23,17 +23,10 @@ public class StackImplementation<E> implements StackInterface<E> {
     * @throws StackAllocationException
     */
    public StackImplementation() throws StackAllocationException {
-      // TODO: call the constructor with size parameter with default size of 10.
       this.capacity=DEFAULT_STACK_SIZE;
    }
 
-   /** TODO: Implement so that
-    * - if the size is less than 2, throw StackAllocationException
-    * - if the allocation of the array throws with Java exception,
-    *   throw StackAllocationException.
-    * @param capacity The capacity of the stack.
-    * @throws StackAllocationException If cannot allocate room for the internal array.
-    */
+   
    public StackImplementation(int capacity) throws StackAllocationException {
       this.capacity=capacity;
       if(capacity<2){
@@ -51,13 +44,11 @@ public class StackImplementation<E> implements StackInterface<E> {
 
    @Override
    public int capacity() {
-      // TODO: Implement this
       return capacity;
    }
 
    @Override
    public void push(E element) throws StackAllocationException, NullPointerException {
-      // TODO: Implement this
       if (element==null) {
          throw new NullPointerException("can't store element with null value");
       }
@@ -85,8 +76,12 @@ public class StackImplementation<E> implements StackInterface<E> {
          throw new StackIsEmptyException("Underflow");
       }
       else{
+
+         //change
+         E returnvalue=(E)itemArray[currentIndex];
+         itemArray[currentIndex]=null;
          currentIndex=currentIndex-1;
-         return (E)itemArray[currentIndex+1];
+         return returnvalue;
       }
    }
 
@@ -103,19 +98,17 @@ public class StackImplementation<E> implements StackInterface<E> {
 
    @Override
    public int size() {
-      // TODO: Implement this
       return (currentIndex+1);
    }
 
    @Override
    public void clear() {
-      // TODO: Implement this
+      itemArray=new Object[capacity];
       currentIndex=-1;
    } 
 
    @Override
    public boolean isEmpty() {
-      // TODO: Implement this
       boolean flag;
       flag=(currentIndex==-1);
       return flag;
