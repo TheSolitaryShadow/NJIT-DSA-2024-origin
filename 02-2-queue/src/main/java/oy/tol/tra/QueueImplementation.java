@@ -19,13 +19,18 @@ public class QueueImplementation<E> implements QueueInterface<E> {
     * @throws QueueAllocationException 
     */
    public QueueImplementation(int capacity) throws QueueAllocationException {
-      this.capacity=capacity;
+      
       if(capacity<2){
          throw new QueueAllocationException("the size is less than 2");
       }
 
       try{
          itemArray = new Object[capacity];
+         this.capacity=capacity;
+         //change
+         head=0;
+         tail=0;
+         numbers=0;
       }
      catch(Exception e) {
          throw new QueueAllocationException("Cannot allocate room for the internal array.");
@@ -78,6 +83,9 @@ public class QueueImplementation<E> implements QueueInterface<E> {
       }
       else{
          E t=(E)itemArray[head];
+         //change
+         itemArray[head]=null;
+
          head=head+1;
          if(head>=capacity){
             head=0;
@@ -107,6 +115,9 @@ public class QueueImplementation<E> implements QueueInterface<E> {
    public void clear() {
       tail=head; 
       numbers=0;
+      //change
+      tail=0;
+      head=0;
    } 
 
    @Override
