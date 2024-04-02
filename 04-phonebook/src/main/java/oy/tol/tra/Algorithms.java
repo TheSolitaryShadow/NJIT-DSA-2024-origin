@@ -38,21 +38,21 @@ public class Algorithms{
    private static <E extends Comparable<E>> int partition(E [] array, int begin, int end) {
       
       E X=array[end];
-      E temp;
       int i=begin-1;
       for(int j=begin;j<=end-1;j++){
          if((array[j]).compareTo(X)<=0){
             i++;
-            temp=array[i];
-            array[i]=array[j];
-            array[j]=temp;
+            swap(array,i,j);
          }
       }
-      temp=array[i+1];
-      array[i+1]=array[end];
-      array[end]=temp;
-
+      swap(array,i+1,end);
       return (i+1);
+   }
+
+   public static <E>void swap(E[] array,int index1,int index2){
+      E tmp=array[index1];
+      array[index1]=array[index2];
+      array[index2]=tmp;
    }
 
 
