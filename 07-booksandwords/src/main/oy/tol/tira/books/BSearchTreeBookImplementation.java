@@ -25,9 +25,6 @@ public class BSearchTreeBookImplementation implements Book {
     private int totalWordCount = 0;
     private int ignoredWordsTotal = 0;
     private long loopCount = 0;
-
-
-    private int count = 0;
     private int maxTreeDepth = 0;
 
 
@@ -71,6 +68,7 @@ public class BSearchTreeBookImplementation implements Book {
         System.out.println("Count of words to ignore:    " + filter.ignoreWordCount());
         System.out.println("Ignored words count:      " + ignoredWordsTotal);
         System.out.println("How many times the inner loop rolled: " + loopCount);
+        System.out.println("The depth of the tree: " + maxTreeDepth);
     }
 
     @Override
@@ -133,6 +131,7 @@ public class BSearchTreeBookImplementation implements Book {
         int length=partitionByRule(words, words.length);
         Arrayreallocate(length);
         Algorithms.fastSort(words);
+        maxTreeDepth=calculateDepth(wordsroot);
 
     }
 
@@ -224,6 +223,13 @@ public class BSearchTreeBookImplementation implements Book {
         return false;
     }
 
-    
+    private int calculateDepth(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftDepth = calculateDepth(node.left);
+        int rightDepth = calculateDepth(node.right);
+        return 1 + Math.max(leftDepth, rightDepth);
+    }
 
 }

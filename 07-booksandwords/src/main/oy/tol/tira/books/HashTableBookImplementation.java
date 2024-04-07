@@ -65,7 +65,8 @@ class HashTableBookImplementation implements Book {
         System.out.println("Count of words to ignore:    " + filter.ignoreWordCount());
         System.out.println("Ignored words count:      " + ignoredWordsTotal);
         System.out.println("How many times the inner loop rolled: " + loopCount);
-        System.out.println("Hash table had " + collisionCount + " collisions when filling the hash table.");
+        System.out.println("Count of collision:     " + collisionCount);
+        System.out.println("Count of real location times:     " + reallocationCount);
     }
 
     @Override
